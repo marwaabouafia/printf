@@ -30,14 +30,14 @@ int _printf(const char *format, ...)
 		}
 		y = x;
 		x++;
-		while (get_flag(p, &params))
+		while (get_flag(x, &params))
 		{
 			x++;
 		}
 		x = get_width(x, &params, ap);
 		x = get_precision(x, &params, ap);
 		if (get_modifier(x, &params))
-			p++;
+			x++;
 		if (!get_specifie(x))
 			result += print_from_to(y, x,
 				params.l_modifier || params.h_modifier ? x - 1 : 0);
