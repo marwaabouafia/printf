@@ -30,7 +30,7 @@ int _printf(const char *format, ...)
 		init_params(&params, ap);
 		if (*p != '%')
 		{
-			result += _putchar(*p);
+			result += putchar(*p);
 			continue;
 		}
 		start = p;
@@ -49,7 +49,7 @@ int _printf(const char *format, ...)
 		else
 		sum += get_print_func(p, ap, &params);
 	}
-	_putchar(BUF_FLUSH);
+	putchar(BUF_FLUSH);
 	va_end(ap);
-	return (result);
+	return (sum);
 }
