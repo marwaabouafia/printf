@@ -11,7 +11,7 @@ int _printf(const char *format, ...)
 {
 	int result = 0;
 	va_list ap;
-	char *p, *y;
+	char *p, *start;
 	params_t params = PARAMS_INIT;
 
 	va_start(ap, format);
@@ -28,7 +28,7 @@ int _printf(const char *format, ...)
 			result += _putchar(*p);
 			continue;
 		}
-		y = p;
+		start = p;
 		p++;
 		while (get_flag(p, &params))
 		{
@@ -39,7 +39,7 @@ int _printf(const char *format, ...)
 		if (get_modifier(p, &params))
 			p++;
 		if (!get_specifie(p))
-			result += print_from_to(y, p,
+			result += print_from_to(start, p,
 				params.l_modifier || params.h_modifier ? p - 1 : 0);
 		else
 			result += get_print_func(p, ap, &params);
