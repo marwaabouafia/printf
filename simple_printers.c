@@ -1,3 +1,5 @@
+#include <limits.h>
+#include <stdio.h>
 #include "main.h"
 
 /**
@@ -54,26 +56,26 @@ int print_rev(va_list ap, params_t *params)
  */
 int print_rot13(va_list ap, params_t *params)
 {
-	int i, index;
+	int x, index;
 	int count = 0;
 	char arr[] =
 		"NOPQRSTUVWXYZABCDEFGHIJKLM      nopqrstuvwxyzabcdefghijklm";
 	char *a = va_arg(ap, char *);
 	(void)params;
 
-	i = 0;
+	x = 0;
 	index = 0;
-	while (a[i])
+	while (a[x])
 	{
-		if ((a[i] >= 'A' && a[i] <= 'Z')
-		    || (a[i] >= 'a' && a[i] <= 'z'))
+		if ((a[x] >= 'A' && a[x] <= 'Z')
+		    || (a[x] >= 'a' && a[x] <= 'z'))
 		{
-			index = a[i] - 65;
+			index = a[x] - 65;
 			count += _putchar(arr[index]);
 		}
 		else
-			count += _putchar(a[i]);
-		i++;
+			count += _putchar(a[x]);
+		x++;
 	}
 	return (count);
 }
