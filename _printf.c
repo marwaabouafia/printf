@@ -6,11 +6,12 @@
 #include "main.h"
 
 /**
- * _printf - prints anything
- * @format: the format string
+ * _printf - function that produces output according to a format.
+ * @format: string
  *
- * Return: number of bytes printed
+ * Return: the number of characters printed
  */
+
 
 int _printf(const char *format, ...)
 {
@@ -43,11 +44,11 @@ int _printf(const char *format, ...)
 		p = get_precision(p, &params, ap);
 		if (get_modifier(p, &params))
 			p++;
-		if (!get_specifie(p)
-			       sum += print_from_to(start, p,
+		if (!get_specifier(p))
+			sum += print_from_to(start, p,
 				params.l_modifier || params.h_modifier ? p - 1 : 0);
 		else
-		sum += get_print_func(p, ap, &params);
+			sum += get_print_func(p, ap, &params);
 	}
 	_putchar(BUF_FLUSH);
 	va_end(ap);
